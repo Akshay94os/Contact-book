@@ -1,0 +1,8 @@
+<!doctype html>
+<html><head><title>Contact Book</title></head><body>
+<h1>Contact Book</h1>
+<form method="post" action="/add/">{% csrf_token %}
+<input name="name" placeholder="Name" required><input name="phone" placeholder="Phone" required><input name="email" type="email" placeholder="Email"><button>Add</button></form>
+<table border="1"><tr><th>Name</th><th>Phone</th><th>Email</th><th>Action</th></tr>
+{% for c in contacts %}<tr><td>{{ c.name }}</td><td>{{ c.phone }}</td><td>{{ c.email }}</td><td><a href="/delete/{{ c.id }}/">Delete</a></td></tr>{% empty %}<tr><td colspan="4">No contacts.</td></tr>{% endfor %}</table>
+</body></html>
